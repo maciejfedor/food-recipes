@@ -18,6 +18,9 @@ class PaginationView extends View {
     const numPages = Math.ceil(
       this._data.results.length / this._data.resultsPerPage
     );
+
+    if (curPage === numPages && numPages === 1) return '';
+
     if (curPage === 1 && numPages > 1) {
       return `<button data-goto="${
         curPage + 1
@@ -58,8 +61,6 @@ class PaginationView extends View {
       </svg>
     </button>
     `;
-
-      return '';
     }
   }
 }
